@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Menu, X, Building2 } from 'lucide-react'
+import { COMPANY_INFO } from '../config/company'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -20,7 +21,7 @@ export default function Header() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 text-2xl font-bold text-primary">
             <Building2 size={32} />
-            <span>БК Містобуд</span>
+            <span>{COMPANY_INFO.name}</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -37,9 +38,9 @@ export default function Header() {
           </nav>
 
           {/* CTA Button */}
-          <button className="hidden md:block btn-primary">
+          <a href={`tel:${COMPANY_INFO.phone}`} className="hidden md:block btn-primary">
             Замовити консультацію
-          </button>
+          </a>
 
           {/* Mobile Menu Button */}
           <button
@@ -63,9 +64,9 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <button className="btn-primary w-full">
+            <a href={`tel:${COMPANY_INFO.phone}`} className="btn-primary w-full text-center block">
               Замовити консультацію
-            </button>
+            </a>
           </nav>
         )}
       </div>

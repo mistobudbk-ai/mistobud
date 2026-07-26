@@ -1,5 +1,6 @@
 import { Mail, Phone, MapPin, Send } from 'lucide-react'
 import { useState } from 'react'
+import { COMPANY_INFO } from '../config/company'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -29,7 +30,7 @@ export default function Contact() {
       <section className="bg-secondary text-white py-16 md:py-24">
         <div className="container-custom">
           <h1 className="text-5xl font-bold mb-4">Контакти</h1>
-          <p className="text-xl text-gray-300">Зв\'яжіться з нами для консультації</p>
+          <p className="text-xl text-gray-300">Звʼяжіться з нами для консультації</p>
         </div>
       </section>
 
@@ -42,7 +43,7 @@ export default function Contact() {
               <h2 className="text-3xl font-bold mb-6 text-secondary">Відправити повідомлення</h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label className="block text-secondary font-semibold mb-2">Ваше ім\'я</label>
+                  <label className="block text-secondary font-semibold mb-2">Ваше імʼя</label>
                   <input
                     type="text"
                     name="name"
@@ -73,7 +74,7 @@ export default function Contact() {
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-primary outline-none transition-colors"
-                    placeholder="+38 (0XX) XXX-XX-XX"
+                    placeholder="+38 (068) 220-08-68"
                   />
                 </div>
                 <div>
@@ -105,8 +106,8 @@ export default function Contact() {
                 <Phone className="text-primary flex-shrink-0" size={28} />
                 <div>
                   <h3 className="font-bold text-secondary mb-1">Телефон</h3>
-                  <a href="tel:+380XXXXXXXXX" className="text-primary hover:underline">+38 (0XX) XXX-XX-XX</a>
-                  <p className="text-gray-600 mt-1">Пн-Пт: 09:00 - 18:00</p>
+                  <a href={`tel:${COMPANY_INFO.phone}`} className="text-primary hover:underline">{COMPANY_INFO.phone}</a>
+                  <p className="text-gray-600 mt-1">{COMPANY_INFO.hours}</p>
                 </div>
               </div>
 
@@ -114,7 +115,7 @@ export default function Contact() {
                 <Mail className="text-primary flex-shrink-0" size={28} />
                 <div>
                   <h3 className="font-bold text-secondary mb-1">Email</h3>
-                  <a href="mailto:info@mistobud.ua" className="text-primary hover:underline">info@mistobud.ua</a>
+                  <a href={`mailto:${COMPANY_INFO.email}`} className="text-primary hover:underline">{COMPANY_INFO.email}</a>
                   <p className="text-gray-600 mt-1">Відповідаємо протягом 24 годин</p>
                 </div>
               </div>
@@ -123,16 +124,16 @@ export default function Contact() {
                 <MapPin className="text-primary flex-shrink-0" size={28} />
                 <div>
                   <h3 className="font-bold text-secondary mb-1">Адреса офісу</h3>
-                  <p className="text-gray-600">м. Київ, вул. Прикладна, 123</p>
-                  <p className="text-gray-600 mt-1">Офіс №201</p>
+                  <p className="text-gray-600 text-sm">{COMPANY_INFO.address}</p>
+                  <p className="text-gray-600 text-sm mt-2">ЄДРОПОУ: {COMPANY_INFO.edrpou}</p>
                 </div>
               </div>
 
               <div className="bg-white p-6 rounded-lg shadow-sm">
                 <h3 className="font-bold text-secondary mb-4">Години роботи</h3>
                 <div className="space-y-2 text-gray-600">
-                  <p><span className="font-semibold">Понеділок - Пятниця:</span> 09:00 - 18:00</p>
-                  <p><span className="font-semibold">Субота:</span> 10:00 - 14:00</p>
+                  <p><span className="font-semibold">Понеділок - П'ятниця:</span> 09:00 - 18:00</p>
+                  <p><span className="font-semibold">Субота:</span> За домовленістю</p>
                   <p><span className="font-semibold">Неділя:</span> Вихідний</p>
                 </div>
               </div>
@@ -146,7 +147,7 @@ export default function Contact() {
         <iframe
           title="map"
           className="w-full h-full"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.9477456950307!2d30.3753928!3d50.4501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cdf7e0b0b0b1%3A0x0b0b0b0b0b0b0b0b!2z0JzQtdC00YDQsNC90LjQtQ!5e0!3m2!1suk!2sua!4v0000000000"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2620.5547854321!2d30.2477!3d49.9833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d57e57e57e57e5%3A0x0!2z0JzQtdC00YDQsNC90LjQtQ!5e0!3m2!1suk!2sua!4v0000000000"
           style={{ border: 0 }}
           allowFullScreen={true}
           loading="lazy"

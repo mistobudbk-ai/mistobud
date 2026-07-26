@@ -1,26 +1,17 @@
 import { useState } from 'react'
+import { PROJECTS } from '../config/projects'
 
 export default function Portfolio() {
   const [filter, setFilter] = useState('all')
-
-  const projects = [
-    { id: 1, title: 'Житловий комплекс "Современ"', category: 'residential', image: 'https://images.unsplash.com/photo-1486525531359-e3d47b94aaea?w=500&h=400&fit=crop', year: 2023 },
-    { id: 2, title: 'Торговий центр "Метро"', category: 'commercial', image: 'https://images.unsplash.com/photo-1449844908441-8829872d2607?w=500&h=400&fit=crop', year: 2022 },
-    { id: 3, title: 'Офісна будівля "Tech Park"', category: 'commercial', image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=400&fit=crop', year: 2023 },
-    { id: 4, title: 'Приватний будинок в Озеріївці', category: 'residential', image: 'https://images.unsplash.com/photo-1570129477492-45ba003d79a5?w=500&h=400&fit=crop', year: 2021 },
-    { id: 5, title: 'Готель "Grand Plaza"', category: 'hospitality', image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500&h=400&fit=crop', year: 2022 },
-    { id: 6, title: 'Навчальний заклад', category: 'public', image: 'https://images.unsplash.com/photo-1509868872897-9efd4fcb3ee3?w=500&h=400&fit=crop', year: 2023 },
-  ]
 
   const categories = [
     { id: 'all', label: 'Всі проекти' },
     { id: 'residential', label: 'Житлові' },
     { id: 'commercial', label: 'Комерційні' },
-    { id: 'hospitality', label: 'Готелі' },
     { id: 'public', label: 'Громадські' },
   ]
 
-  const filteredProjects = filter === 'all' ? projects : projects.filter(p => p.category === filter)
+  const filteredProjects = filter === 'all' ? PROJECTS : PROJECTS.filter(p => p.category === filter)
 
   return (
     <div>
@@ -59,20 +50,28 @@ export default function Portfolio() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map(project => (
               <div key={project.id} className="group cursor-pointer">
-                <div className="relative overflow-hidden rounded-lg mb-4">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
+                <div className="relative overflow-hidden rounded-lg mb-4 h-64 bg-gray-300">
+                  <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-400 flex items-center justify-center">
+                    <div className="text-center">
+                      <p className="text-gray-600 font-semibold">{project.title}</p>
+                      <p className="text-gray-500 text-sm mt-2">Фото проекту</p>
+                    </div>
+                  </div>
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
                     <button className="opacity-0 group-hover:opacity-100 btn-primary transition-opacity duration-300">
                       Переглянути проект
                     </button>
                   </div>
                 </div>
-                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                <p className="text-primary font-semibold">{project.year}</p>
+                <div>
+                  <h3 className="text-xl font-bold mb-2 text-secondary">{project.title}</h3>
+                  <p className="text-gray-600 text-sm mb-3">{project.location}</p>
+                  <p className="text-gray-700 mb-4 line-clamp-2">{project.description}</p>
+                  <div className="flex justify-between items-center">
+                    <span className="text-primary font-semibold">{project.year}</span>
+                    <a href="#" className="text-primary hover:text-orange-600 text-sm font-semibold">Детальніше →</a>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -84,7 +83,7 @@ export default function Portfolio() {
         <div className="container-custom">
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div>
-              <div className="text-5xl font-bold mb-2">150+</div>
+              <div className="text-5xl font-bold mb-2">{PROJECTS.length}+</div>
               <p className="text-lg">Завершених проектів</p>
             </div>
             <div>
